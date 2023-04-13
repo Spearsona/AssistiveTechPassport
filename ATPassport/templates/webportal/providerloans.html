@@ -1,0 +1,31 @@
+{% extends "./base_template.html" %}
+  
+{% block content %}
+  <h1>{{ provider }} Loans</h1>
+  <table>
+    <tr>
+      <th>Current Loans</th>
+    </tr>
+    {% for loan in providerloans %}
+      
+      <tr>
+        <td>LoanId: {{loan.id}}</td>
+      </tr>
+      <tr>
+        <td>Equipment: {{loan.equipment.name}} </td>
+      </tr>
+      <tr>
+        <td>Description: {{loan.equipment.description}}</td>
+      </tr>
+      <tr>
+        <td>Category: {{loan.equipment.atcategory}}</td>
+      </tr>
+      <tr>
+        <td>User: {{loan.atuser}}</td>
+      </tr>
+      <tr>
+        <td><br><td>
+      </tr>
+      {% endfor %}
+  
+{% endblock %}

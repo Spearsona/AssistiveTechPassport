@@ -1,18 +1,17 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import AtUser, LoanInstance
+from .models import AtUser, LoanInstance, Provider
 app_name = 'webportal'
 
 def index(request):
     context={}
     return render(request, 'webportal/index.html', context) 
 
-
+@login_required
 def userloans(request):
     #userid will be taken from session, putting in placeholder user for now
-    atuserid = 1
-    
-    atuser = AtUser.objects.get(user_id=1)
+    atuserid = request.user.id
+    atuser = AtUser.objects.get()
     
     userloans = LoanInstance.objects.filter(atuser=atuserid)
 
@@ -27,5 +26,15 @@ def userloans(request):
 
 @login_required
 def providerloans(request):
-    pass
+    provideruser = request.user
+    provideruser = Provider.objects.get(pk=provideruser)
+    providerloans = LoanInstance.objects.filter(provider=provideruser)
+    
+
+    context ={
+        'provider': provideruser,
+        'providerloans': providerloans,
+        
+    }
+    return render(request, 'webportal/providerloans.html', context)
 

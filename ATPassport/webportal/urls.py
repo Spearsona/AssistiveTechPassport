@@ -8,7 +8,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('providerloans', views.providerloans, name='providerloans'),
     path('userloans', views.userloans, name='userloans'),
+    
 ]
 
 #Remove for production enviornment
