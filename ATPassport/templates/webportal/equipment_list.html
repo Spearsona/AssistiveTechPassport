@@ -1,0 +1,17 @@
+{% extends "./base_template.html" %}
+
+{% block content %}
+    <h1>Equipment</h1>
+    <ul>
+        {% for equipment in object_list %}
+        <li>{{ equipment.name }}</li>
+        <ul>
+            <li>{{ equipment.description }}</li>
+        </ul>
+        
+
+    {% empty %}
+        <li>No Equipment Available</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

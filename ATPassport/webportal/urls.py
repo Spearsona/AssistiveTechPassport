@@ -1,4 +1,5 @@
 from django.urls import path
+from .views import EquipmentListView
 
 from . import views
 # Use static() to add URL mapping to serve static files during development (only)
@@ -10,6 +11,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('providerloans', views.providerloans, name='providerloans'),
     path('userloans', views.userloans, name='userloans'),
+    path('equipment', EquipmentListView.as_view(), name='equipment')
     
 ]
 

@@ -1,0 +1,18 @@
+{% extends "./base_template.html" %}
+  
+{% block content %}
+  <h1>Equipment Catalog</h1>
+    <h2>Categories</h2>
+    <ul>
+        {% for category in atcategories %}
+        <li> {{category.name}}</li>
+        {% end for %}
+    </ul>
+    <h2>All Equipment</h2>
+    <ul>
+      {% for item in equipment %}
+      <li>{{item.name}}</li>
+      {% end for%}
+    </ul>
+
+{% endblock %}

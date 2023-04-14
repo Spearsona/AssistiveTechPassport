@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import AtUser, LoanInstance, Provider
+from django.views.generic.list import ListView
+from .models import AtUser, LoanInstance, Provider, Equipment
 app_name = 'webportal'
 
 def index(request):
@@ -37,4 +38,15 @@ def providerloans(request):
         
     }
     return render(request, 'webportal/providerloans.html', context)
+
+def Catalog(request):
+    context={
+    }
+    return render(request, 'webportal/catalog.html', context)
+
+    
+class EquipmentListView(ListView):
+    model = Equipment
+    paginate_by: 20
+
 
