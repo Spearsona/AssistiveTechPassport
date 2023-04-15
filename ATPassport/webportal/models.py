@@ -1,6 +1,8 @@
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
+from datetime import date
+
 
 class User(AbstractUser):
     pass
@@ -49,6 +51,12 @@ class LoanInstance(models.Model):
     equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE)
     atuser = models.ForeignKey(AtUser, on_delete=models.CASCADE)
     provider = models.ForeignKey(Provider, on_delete=models.CASCADE)
+    
+    @property
+    def is_overdue(self):
+        """Check whether the Loan is overdue based on due date and current date."""
+        return bool(self.due_date and date.today() > self.due_back)
+
 
     class Meta:
         permissions = (("can_return", "Can set loan as returned"),)

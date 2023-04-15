@@ -47,6 +47,6 @@ def Catalog(request):
     
 class EquipmentListView(ListView):
     model = Equipment
-    paginate_by: 20
+    paginate_by: 5
 
 
