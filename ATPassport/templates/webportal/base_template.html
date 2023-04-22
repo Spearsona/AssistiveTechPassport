@@ -1,9 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     {% block title %}<title>ATPass</title>{% endblock %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'ATPassport/style.css' %}">
+    <link rel="stylesheet" href="{% static 'ATPassport/normalize.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
   </head>
   <body>
     <ul class="sidebar-nav">
@@ -11,12 +18,14 @@
        <li>User: {{ user.get_username }}</li>
        <li><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
      {% else %}
-       <li><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
+       {% comment %} <li><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li> {% endcomment %}
      {% endif %}
     </ul>
+    
+
     {% block content %}
     {% endblock %}
-
+      
     {% block pagination %}
       {% if is_paginated %}
         <div class="pagination">
