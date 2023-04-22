@@ -18,7 +18,7 @@ def index(request):
 def userloans(request):
     #userid will be taken from session, putting in placeholder user for now
     atuserid = request.user.id
-    atuser = AtUser.objects.get()
+    atuser = AtUser.objects.get(user_id=atuserid)
     
     userloans = LoanInstance.objects.filter(atuser=atuserid)
 
@@ -98,7 +98,11 @@ def loanEquipment(request, id):
     if equipment.inventory > 0: 
         equipment.inventory = equipment.inventory - 1
         threemonthstime = datetime.today() + relativedelta(months=3)
-        loaninstance = LoanInstance.create(due_date=threemonthstime, equipment=equipment, atuser=request.user, provider=equipment.provider)
+        
+        atuserid = request.user
+        print(atuserid)
+        atuser = AtUser.objects.get(pk=atuserid)
+        loaninstance = LoanInstance.create(due_date=threemonthstime, equipment=equipment, atuser=atuser, provider=equipment.provider)
         
         loaninstance.save()
         equipment.save()
