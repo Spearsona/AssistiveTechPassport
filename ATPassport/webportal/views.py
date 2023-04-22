@@ -82,4 +82,12 @@ def EquipmentListView(request):
     }
     return render(request, 'webportal/equipment_list.html', context)
 
+@login_required
+# @permission_required('catalog.can_mark_returned', raise_exception=True)
+def delete_Equipment(request, id):
+    print("IN DELETE")
+    equipment = get_object_or_404(Equipment, pk=id)
+    equipment.delete()
+    return HttpResponseRedirect("/webportal/equipment")
+
 

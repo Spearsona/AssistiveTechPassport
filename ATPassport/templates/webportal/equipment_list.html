@@ -23,7 +23,7 @@
                   <td>Amount :{{ equipment.inventory }}</td>
                 </tr>
               </table>
-              
+              <a href="{% url 'equipmentdelete' equipment.id %}">Delete</a>
             </div>
           </div>
         </div>
@@ -31,7 +31,7 @@
     {% empty %}
         <li>No Equipment Available</li>
     {% endfor %}
-    <form action="" method="post">
+    <form action="" method="POST">
         {% csrf_token %}
         <table>
         {{ createform.as_table }}
