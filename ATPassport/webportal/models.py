@@ -35,29 +35,45 @@ class AtCategory(models.Model):
 
     def __str__(self):
         return self.name
+    @classmethod
+    def create(cls):
+        category = cls(name='generic', desc='generic')
+        category.save()
+        return category
+
 
 
 class Equipment(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=500)
     atcategory = models.ForeignKey(AtCategory, on_delete=models.CASCADE)
+    inventory = models.IntegerField(default= 10)
 
     def __str__(self):
         return self.name
+    
+    @classmethod
+    def create(cls, name, description, atcategory, inventory):
+        equipment = cls(name=name, description=description, atcategory=atcategory, inventory=inventory)
+        return equipment
 
-
+   
+    
 class LoanInstance(models.Model):
     due_date = models.DateField()
     equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE)
     atuser = models.ForeignKey(AtUser, on_delete=models.CASCADE)
     provider = models.ForeignKey(Provider, on_delete=models.CASCADE)
-    
+
     @property
     def is_overdue(self):
         """Check whether the Loan is overdue based on due date and current date."""
-        return bool(self.due_date and date.today() > self.due_back)
+        return bool(self.due_date and date.today() > self.due_date)
+    
+    
 
 
     class Meta:
         permissions = (("can_return", "Can set loan as returned"),)
+
 

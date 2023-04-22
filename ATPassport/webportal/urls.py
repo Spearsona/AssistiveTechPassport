@@ -11,7 +11,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('providerloans', views.providerloans, name='providerloans'),
     path('userloans', views.userloans, name='userloans'),
-    path('equipment', EquipmentListView.as_view(), name='equipment')
+    path('equipment', views.EquipmentListView, name='equipment')
     
 ]
 
