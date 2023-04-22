@@ -66,7 +66,8 @@ def EquipmentListView(request):
                                   createform.cleaned_data['description'],
                                   AtCategory.objects.get(name=catString),
                                   createform.cleaned_data['inventory'],
-                                  provider)
+                                  provider,
+                                  createform.cleaned_data['imgsrc'])
             eq.save()
             return HttpResponseRedirect("/webportal/equipment")
     elif request.method == 'PUT':

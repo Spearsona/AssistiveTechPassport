@@ -4,8 +4,9 @@ from .models import AtCategory, Equipment
 
 class CreateEquipmentForm(forms.Form):
     name = forms.CharField(max_length=100)
-    description = forms.CharField(widget=forms.Textarea(attrs={"rows":5}))
+    description = forms.CharField(widget=forms.Textarea(attrs={"rows":5}),max_length=500)
     atcategories = AtCategory.objects.all()
+    imgsrc = forms.CharField(max_length=10000)
     
     CATEGORIES = ()
     for item in atcategories:

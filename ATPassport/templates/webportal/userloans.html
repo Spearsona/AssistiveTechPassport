@@ -5,7 +5,7 @@
   <p>
     Welcome {{ atuser }}!
     You have {{ num_userloans }} loans. </p>
-      
+      <a href="{% url 'equipment' %}">Loan More Equipment?</a>
       {% for loan in userloans %}
       <div class="equipment-card">
         <div class="item-box">

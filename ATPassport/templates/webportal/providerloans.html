@@ -2,6 +2,7 @@
   
 {% block content %}
   <h1>{{ provider }} Loans</h1>
+  <a href="{% url 'equipment' %}">View Equipment Library</a>
   
     {% for loan in providerloans %}
     <div class="equipment-card">

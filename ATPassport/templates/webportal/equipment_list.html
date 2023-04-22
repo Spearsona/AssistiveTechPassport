@@ -2,12 +2,19 @@
 
 {% block content %}
     <h1>Equipment</h1>
+    {% if perms.webportal.add_loaninstance %}
+      <a href="{% url 'userloans' %}">View Loans</a>
+    {% endif %}
+    {% if perms.webportal.delete_equipment %}
+      <a href="{% url 'providerloans' %}">View Loans</a>
+    {% endif %}
+
     <ul>
         {% for equipment in equipment %}
         <div class="equipment-card">
             <div class="item-box">
               <div class="item-column">
-                <img class="loan-image" width="100" height="140"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdXBvqMPgDQBW5joJZh_LqTlt4GtlxKLNj1w&usqp=CAU ">
+                <img class="loan-image" width="100" height="140"  src="{{ equipment.imgsrc }}">
               </div>
             
             <div class="item-column">
@@ -23,8 +30,12 @@
                   <td>Amount :{{ equipment.inventory }}</td>
                 </tr>
               </table>
-              <a href="{% url 'loanEquipment' equipment.id %}">Loan Out</a>
-              <a href="{% url 'equipmentdelete' equipment.id %}">Delete</a>
+              {% if perms.webportal.add_loaninstance %}
+                <a href="{% url 'loanEquipment' equipment.id %}">Loan Out</a>
+              {% endif %}
+              {% if perms.webportal.delete_equipment %}
+                <a href="{% url 'equipmentdelete' equipment.id %}">Delete</a>
+              {% endif %}
             </div>
           </div>
         </div>

@@ -44,18 +44,24 @@ class AtCategory(models.Model):
 
 
 class Equipment(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=255)
     description = models.CharField(max_length=500)
     atcategory = models.ForeignKey(AtCategory, on_delete=models.CASCADE)
     inventory = models.IntegerField(default= 10)
     provider = models.ForeignKey(Provider, on_delete=models.CASCADE)
+    imgsrc = models.CharField(max_length=10000, default="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Empty_set_symbol.svg/640px-Empty_set_symbol.svg.png")
 
     def __str__(self):
         return self.name
     
     @classmethod
-    def create(cls, name, description, atcategory, inventory, provider):
-        equipment = cls(name=name, description=description, atcategory=atcategory, inventory=inventory, provider=provider)
+    def create(cls, name, description, atcategory, inventory, provider,imgsrc):
+        equipment = cls(name=name, 
+                        description=description,
+                        atcategory=atcategory, 
+                        inventory=inventory, 
+                        provider=provider,
+                        imgsrc=imgsrc)
         return equipment
 
    
