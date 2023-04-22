@@ -48,13 +48,14 @@ class Equipment(models.Model):
     description = models.CharField(max_length=500)
     atcategory = models.ForeignKey(AtCategory, on_delete=models.CASCADE)
     inventory = models.IntegerField(default= 10)
+    provider = models.ForeignKey(Provider, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
     
     @classmethod
-    def create(cls, name, description, atcategory, inventory):
-        equipment = cls(name=name, description=description, atcategory=atcategory, inventory=inventory)
+    def create(cls, name, description, atcategory, inventory, provider):
+        equipment = cls(name=name, description=description, atcategory=atcategory, inventory=inventory, provider=provider)
         return equipment
 
    
@@ -70,9 +71,11 @@ class LoanInstance(models.Model):
         """Check whether the Loan is overdue based on due date and current date."""
         return bool(self.due_date and date.today() > self.due_date)
     
+    @classmethod
+    def create(cls, due_date, equipment, atuser, provider):
+        loaninstance = cls(due_date=due_date, equipment=equipment, atuser=atuser, provider=provider)
+        return loaninstance
     
-
-
     class Meta:
         permissions = (("can_return", "Can set loan as returned"),)
 

@@ -23,6 +23,7 @@
                   <td>Amount :{{ equipment.inventory }}</td>
                 </tr>
               </table>
+              <a href="{% url 'loanEquipment' equipment.id %}">Loan Out</a>
               <a href="{% url 'equipmentdelete' equipment.id %}">Delete</a>
             </div>
           </div>
@@ -31,6 +32,8 @@
     {% empty %}
         <li>No Equipment Available</li>
     {% endfor %}
+    {% if perms.webportal.add_equipment %}
+    <h2>Add new Equipment</h2>
     <form action="" method="POST">
         {% csrf_token %}
         <table>
@@ -38,6 +41,6 @@
         </table>
         <input type="submit" value="Submit">
     </form>
-    
+    {% endif %}
     </ul>
 {% endblock %}
