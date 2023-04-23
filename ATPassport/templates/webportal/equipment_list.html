@@ -1,20 +1,17 @@
 {% extends "./base_template.html" %}
 
 {% block content %}
-    <h1>Equipment</h1>
-    {% if perms.webportal.add_loaninstance %}
-      <a href="{% url 'userloans' %}">View Loans</a>
-    {% endif %}
-    {% if perms.webportal.delete_equipment %}
-      <a href="{% url 'providerloans' %}">View Loans</a>
-    {% endif %}
-
-    <ul>
+<div class="col-container">
+  <div>
+    <div class="banner" >
+      <h1>Equipment</h1>
+    </div>
+    <div class="col-container justcenter">
         {% for equipment in equipment %}
         <div class="equipment-card">
             <div class="item-box">
               <div class="item-column">
-                <img class="loan-image" width="100" height="140"  src="{{ equipment.imgsrc }}">
+                <img class="loan-image" width="100" height="140"  src="{{ equipment.imgsrc }}" alt="{{ equipment.name }}">
               </div>
             
             <div class="item-column">
@@ -59,5 +56,5 @@
         <input type="submit" value="Submit">
     </form>
     {% endif %}
-    </ul>
+  </div>
 {% endblock %}

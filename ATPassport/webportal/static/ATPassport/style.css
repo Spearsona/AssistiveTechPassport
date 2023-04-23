@@ -1,24 +1,62 @@
-.sidebar-nav {
-    background-color: #d3e8ff;
-    list-style-type: none;
-    display: flex; 
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 0%;
-}
+
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
 }
-.wrapper{
+
+.sidebar-nav {
+    background-color: #ed994c;
+    list-style-type: none;
+    display: flex; 
+    flex-direction: row;
+    margin: 0%;
+    padding: 8px 0px 8px 0px;
+    align-items: center;
+}
+
+.navitem {
+ width: 20%;
+ padding: auto;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.body-wrapper{
+    background-color: #9dc2ed;
+}
+
+.col-container {
     display: flex;
-    
-    /* flex-direction: row; */
+    flex-direction: column;
+}
+
+.row-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.justcenter {
     justify-content: center;
-    background-color: lightblue;
-    height: 100%;
+    align-items: center;
+}
+
+.usernameLabel {
+    font-size: 20px;
+    font-weight: 600;
+    padding-right: 8px;
+}
+
+.banner {
+    width : 100%;
+    padding-left: 2.5em;
+}
+
+.username {
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .login-column {
@@ -40,6 +78,7 @@ html, body {
     border: 1px solid black;
     margin: 1em;
     background-color:aliceblue ;
+    border-radius: .5em;
 }
 .item-box{
     display: flex;
@@ -53,3 +92,22 @@ html, body {
 .loan-image{
     border: 1px solid black;
 }
+
+.nice-button {
+    background-color: #39b78a; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    /* margin: 4px 2px; */
+    cursor: pointer;
+    border-radius: .5em;
+}
+
+#39b78a
+#3cb5bd 
+#519bde 
+#798ee8 
+#927ae5

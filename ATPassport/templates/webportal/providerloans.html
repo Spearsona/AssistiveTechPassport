@@ -1,14 +1,12 @@
 {% extends "./base_template.html" %}
   
 {% block content %}
-  <h1>{{ provider }} Loans</h1>
-  <a href="{% url 'equipment' %}">View Equipment Library</a>
-  
+  <h1>{{ provider }} Loans</h1>  
     {% for loan in providerloans %}
     <div class="equipment-card">
       <div class="item-box">
         <div class="item-column">
-          <img class="loan-image" width="100" height="140"  src="{{ loan.equipment.imgsrc }}">
+          <img class="loan-image" width="100" height="140"  src="{{ loan.equipment.imgsrc }}" alt="{{loan.equipment.name}}">
         </div>
       
       <div class="item-column">

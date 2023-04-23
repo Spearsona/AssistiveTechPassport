@@ -2,22 +2,11 @@
   
 {% block content %}
 
-<div class="wrapper">
-  <h1>AT-Pass</h1>
-  <h2>The Assistive Technology Passport</h2>
-  
-  
-  {% if perms.webportal.change_equipment %}
-  <a href="{%url 'providerloans'%}">Your Loans</a>
-
-  {% else %}
-  <a href="{%url 'userloans'%}">Your Loans</a>
-  
-  {% endif %}
-  <a href="{%url 'equipment'%}">Available equipment</a>
-
-  <a href="http://127.0.0.1/#/home/">Your Documents</a>
-
-
+<div class="row-container justcenter">
+  <div class="col-container justcenter">
+    <h1>AT-Pass</h1>
+    <h2>The Assistive Technology Passport</h2>
+    <p>Instructions go here</p>
+  </div>
 </div>
 {% endblock %}
