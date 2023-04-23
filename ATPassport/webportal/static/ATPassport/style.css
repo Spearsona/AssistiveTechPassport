@@ -87,14 +87,18 @@ html, body {
 .item-column{
     display: flex;
     flex-direction: column;
+    
 }
 
 .loan-image{
     border: 1px solid black;
+    border-radius: 0.5em;
+    height: 200px;
+    width:  200px;
 }
 
 .nice-button {
-    background-color: #39b78a; /* Green */
+    background-color: #2d775d; /* Green */
     border: none;
     color: white;
     padding: 8px 16px;
@@ -103,7 +107,17 @@ html, body {
     display: inline-block;
     /* margin: 4px 2px; */
     cursor: pointer;
-    border-radius: .5em;
+    border-radius: .5em;    
+}
+.nice-button:disabled {
+    background-color: grey;
+}
+.form-layout{
+    margin:.5em;
+    padding: .5em;
+}
+.align-center{
+    align-content: center;
 }
 
 #39b78a

@@ -7,13 +7,12 @@
       <h1>Equipment</h1>
     </div>
     <div class="col-container justcenter">
-        {% for equipment in equipment %}
+      {% for equipment in equipment %}
         <div class="equipment-card">
-            <div class="item-box">
-              <div class="item-column">
-                <img class="loan-image" width="100" height="140"  src="{{ equipment.imgsrc }}" alt="{{ equipment.name }}">
-              </div>
-            
+          <div class="item-box">
+            <div class="item-column">
+              <img class="loan-image"  src="{{ equipment.imgsrc }}" alt="{{ equipment.name }}">
+            </div>
             <div class="item-column">
               <table>
                 <tr>
@@ -22,39 +21,39 @@
                 <tr>
                   <td>Desc:{{ equipment.description }}</td>
                 </tr>
-                </tr>
                 <tr>
                   <td>Amount :{{ equipment.inventory }}</td>
                 </tr>
               </table>
-              {% if perms.webportal.add_loaninstance %}
-                
+              {% if perms.webportal.add_loaninstance %}  
                 {% if equipment.inventory > 0 %}
-                  <a href="{% url 'loanEquipment' equipment.id %}">Loan Out</a>
+                  <a href="{% url 'loanEquipment' equipment.id %}"><button class="nice-button">Loan Out</button></a>
                 {% else %}
-                  <p>No Items Available</p>
-                {% endif %}
-                
+                  <button class="nice-button" disabled=true>No Items Available</button>
+                {% endif %}  
               {% endif %}
               {% if perms.webportal.delete_equipment %}
-                <a href="{% url 'equipmentdelete' equipment.id %}">Delete</a>
+                <a href="{% url 'equipmentdelete' equipment.id %}"><button class="nice-button">Delete</button></a>
               {% endif %}
             </div>
           </div>
-        </div>
-        
-    {% empty %}
+        </div> 
+      {% empty %}
         <li>No Equipment Available</li>
-    {% endfor %}
+      {% endfor %}
     {% if perms.webportal.add_equipment %}
-    <h2>Add new Equipment</h2>
-    <form action="" method="POST">
+      <h2>Add new Equipment</h2>
+      <div class="form-layout col-container justcenter">
+        <form action="" method="POST">
         {% csrf_token %}
-        <table>
-        {{ createform.as_table }}
-        </table>
-        <input type="submit" value="Submit">
-    </form>
+          <table>
+            {{ createform.as_table }}
+          </table>
+          <div class="row-container justcenter">
+            <input class="nice-button" type="submit" value="Submit">
+          </div>
+        </form>
+      </div>
     {% endif %}
   </div>
 {% endblock %}

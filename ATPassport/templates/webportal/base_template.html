@@ -21,7 +21,7 @@
           <span class='username'>{{ user.get_username }}</span>
         </li>
         <li class="navitem">
-          <a href="{% url 'equipment' %}"><button class="nice-button">View Equipment Library</button></a>
+          <a href="{% url 'equipment' %}"><button aria-label="View Equipment" class="nice-button">View Equipment Library</button></a>
         </li>
         {% if perms.webportal.add_loaninstance %}
         <li class="navitem">
