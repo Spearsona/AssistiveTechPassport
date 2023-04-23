@@ -8,7 +8,7 @@
     <div class="equipment-card">
       <div class="item-box">
         <div class="item-column">
-          <img class="loan-image" width="100" height="140"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdXBvqMPgDQBW5joJZh_LqTlt4GtlxKLNj1w&usqp=CAU ">
+          <img class="loan-image" width="100" height="140"  src="{{ loan.equipment.imgsrc }}">
         </div>
       
       <div class="item-column">
@@ -39,6 +39,9 @@
               <td><br><td>
             </tr>
         </table>
+        {% if perms.webportal.delete_equipment %}
+          <a href="{% url 'returnEquipment' loan.id %}">Return Loan</a>
+        {% endif %}
       </div>
     </div>
   </div>

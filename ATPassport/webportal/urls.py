@@ -13,7 +13,9 @@ urlpatterns = [
     path('userloans', views.userloans, name='userloans'),
     path('equipment', views.EquipmentListView, name='equipment'),
     path('equipmentdelete/<int:id>',views.delete_Equipment, name='equipmentdelete'),
-    path('loanEquipment/<int:id>',views.loanEquipment, name='loanEquipment')
+    path('loanEquipment/<int:id>',views.loanEquipment, name='loanEquipment'),
+    path('returnEquipment/<int:id>',views.returnEquipment, name='returnEquipment')
+
 ]
 
 #Remove for production enviornment

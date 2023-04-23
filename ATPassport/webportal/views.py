@@ -16,7 +16,6 @@ def index(request):
 
 @login_required
 def userloans(request):
-    #userid will be taken from session, putting in placeholder user for now
     atuserid = request.user.id
     atuser = AtUser.objects.get(user_id=atuserid)
     
@@ -82,8 +81,8 @@ def EquipmentListView(request):
     }
     return render(request, 'webportal/equipment_list.html', context)
 
+
 @login_required
-# @permission_required('catalog.can_mark_returned', raise_exception=True)
 def delete_Equipment(request, id):
     print("IN DELETE")
     equipment = get_object_or_404(Equipment, pk=id)
@@ -111,6 +110,15 @@ def loanEquipment(request, id):
 
     else:
         raise Exception("Inventory not sufficent to loan this equipment")
+    
+@login_required
+@permission_required('webportal.delete_equipment', raise_exception=True)
+def returnEquipment(request, id):
+    print("Im returning a loan")
+    loan = get_object_or_404(LoanInstance, pk=id)
+    loan.delete()
+    return HttpResponseRedirect("/webportal/providerloans")
+
     
    
     

@@ -31,7 +31,13 @@
                 </tr>
               </table>
               {% if perms.webportal.add_loaninstance %}
-                <a href="{% url 'loanEquipment' equipment.id %}">Loan Out</a>
+                
+                {% if equipment.inventory > 0 %}
+                  <a href="{% url 'loanEquipment' equipment.id %}">Loan Out</a>
+                {% else %}
+                  <p>No Items Available</p>
+                {% endif %}
+                
               {% endif %}
               {% if perms.webportal.delete_equipment %}
                 <a href="{% url 'equipmentdelete' equipment.id %}">Delete</a>
