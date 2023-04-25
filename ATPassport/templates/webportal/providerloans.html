@@ -1,19 +1,18 @@
 {% extends "./base_template.html" %}
   
 {% block content %}
+<div class="banner" >
   <h1>{{ provider }} Loans</h1>  
-  {% for loan in providerloans %}
-    <div class="row-container justcenter">
+</div>
+{% for loan in providerloans %}
+  <div class="row-container justcenter">
       <div class="equipment-card  ">
         <div class="item-box">
           <div class="item-column">
             <img class="loan-image" width="100" height="140"  src="{{ loan.equipment.imgsrc }}" alt="{{loan.equipment.name}}">
           </div> 
         <div class="item-column ">
-          <table>
-            <tr>
-              <td>LoanId: {{loan.id}}</td>
-            </tr>
+          <table class="styled-table">
             <tr>
               <td>Equipment: {{loan.equipment.name}} </td>
             </tr>
@@ -34,7 +33,9 @@
             </tr>
            </table>
             {% if perms.webportal.delete_equipment %}
-              <a href="{% url 'returnEquipment' loan.id %}">Return Loan</a>
+            <div class="row-container justcenter">
+              <a href="{% url 'returnEquipment' loan.id %}"><button class="nice-button">Return Loan</button></a>
+            </div>
             {% endif %}
           </div>
         </div>

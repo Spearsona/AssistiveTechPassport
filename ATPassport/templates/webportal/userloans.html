@@ -1,26 +1,24 @@
 {% extends "./base_template.html" %}
 
 {% block content %}
-<div>
+<div class="row-container justcenter">
+  <div class="col-container justcenter">
   <h1>Your Loans</h1>
   <p>
     Welcome {{ atuser }}!
     You have {{ num_userloans }} loans. 
   </p>
-  <a href="{% url 'equipment' %}">Loan More Equipment?</a>
   {% for loan in userloans %}
   <div class="equipment-card">
     <div class="item-box">
       <div class="item-column">
         <img class="loan-image" width="100" height="140"  src="{{ loan.equipment.imgsrc }}" alt="{{ loan.equipment.name }}">
       </div>
-        
       <div class="item-column">
-        <table>
+        <table class="styled-table">
           <tr>
             <td>Loan Item:{{loan.id}}</td>
           </tr>
-          
           <tr>
             <td>Equipment: {{loan.equipment.name}} </td>
           </tr>
@@ -41,5 +39,6 @@
       </div>
     </div>    
   {% endfor %}
+  </div>
 </div>   
 {% endblock %}

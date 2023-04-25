@@ -14,7 +14,7 @@ class CreateEquipmentForm(forms.Form):
         CATEGORIES = CATEGORIES + ((item.name, item.name),)
  
     atcategory = forms.CharField(label='Equipment Category:', widget=forms.Select(choices=CATEGORIES))
-    inventory = forms.IntegerField()
+    inventory = forms.IntegerField(min_value=0)
 
     class Meta:
         model = Equipment
